@@ -2,13 +2,7 @@ const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  entry: "./client/src/main.ts",
-  module: {
-    rules: [{
-      test: /\.ts$/,
-      use: 'ts-loader' // compile TypeScript
-    }]
-  },
+  entry: "./src/cloud_functions/main.js",
   plugins: [
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ["**/*.js", "**/*.js.map"],

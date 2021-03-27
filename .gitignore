@@ -5,3 +5,4 @@ node_modules
 
 # VS Code-related
 .history
+.vscode
