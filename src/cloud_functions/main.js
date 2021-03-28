@@ -1,4 +1,5 @@
-const Tweet = require('./models/Tweet');
+const Twitter = require('twitter');
+const Tweet   = require('./models/Tweet');
 
 /**
  * Responds to any HTTP request.
@@ -9,16 +10,23 @@ const Tweet = require('./models/Tweet');
 // eslint-disable-next-line consistent-return
 exports.main = (req, resp) => {
   try {
+    const twitter = new Twitter({
+      consumer_key:        CONSUMER_KEY,
+      consumer_secret:     CONSUMER_SECRET,
+      access_token_key:    ACCESS_TOKEN_KEY,
+      access_token_secret: ACCESS_TOKEN_SECRET
+    });
+
     const tweet = new Tweet(req.head_commit, ['test', 'twitter', 'api']);
 
-    tweet.post('statuses/update', tweet.status)
+    twitter.post('statuses/update', tweet.status)
       .then(tweet => {
         return resp
-        .status(200)
-        .send(JSON.stringify({
-          result: 'Tweet was successful!',
-          return: tweet
-        }));
+          .status(200)
+          .send(JSON.stringify({
+            result: 'Tweet was successful!',
+            return: tweet
+          }));
       })
       .catch(error => {
         throw error;

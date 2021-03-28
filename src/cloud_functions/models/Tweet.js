@@ -1,11 +1,4 @@
-const Twitter = require('twitter');
-
-class Tweet extends Twitter {
-  consumer_key        = CONSUMER_KEY;
-  consumer_secret     = CONSUMER_SECRET;
-  access_token_key    = ACCESS_TOKEN_KEY;
-  access_token_secret = ACCESS_TOKEN_SECRET;
-
+class Tweet {
   constructor(commit, tags) {
     this.message   = commit.message.concat('\n', commit.url);
     this.url       = commit.url;
@@ -14,8 +7,8 @@ class Tweet extends Twitter {
   }
 
   get status() {
-    return commit.message.concat('\n', commit.url).concat('\n\n', tags);
+    return this.message.concat('\n', this.url).concat('\n\n', this.tags);
   }
-};
+}
 
 export default Tweet;
