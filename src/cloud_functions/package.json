@@ -1,0 +1,13 @@
+{
+  "name": "diary_tweet_gateway_via_cf",
+  "version": "1.0.0",
+  "description": "Hit the Twitter API triggered by GitHub webhook of this remote repo and tweet automatically.",
+  "main": "main.js",
+  "repository": "https://github.com/kk0917/diary_tweet_automation",
+  "author": "@kame_greenergy",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "twitter": "^1.7.1"
+  }
+}
